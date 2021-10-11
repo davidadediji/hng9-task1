@@ -11,33 +11,46 @@ def init():
     print("1. Covert cipher code\n2. Logout")
 
     while is_valid_option_selected == False:
-        proceed=int(input("choose option 1 or option2 above: "))
-
-        if proceed == 1:
-            is_valid_option_selected == True
-            cipher =int(input("Which operation would you like to perform? 1. Encryption 2. Decryption: "))
-            if cipher == 1:
-                encrypt()
-                break
+        try:
+            proceed=int(input("choose option 1 or option2 above: "))
+            if proceed == 1:
+                is_valid_option_selected == True
+                try:
+                    cipher =int(input("Which operation would you like to perform? 1. Encryption 2. Decryption: "))
+                    if cipher == 1:
+                        encrypt()
+                        break
             
-            elif cipher == 2:
-                decrypt()
-                break
+                    elif cipher == 2:
+                        decrypt()
+                        break
+                    else:
+                        print("ensure you select the right option, try again")
+                except ValueError:
+                        print("Please choose either encryption or decryption")
+                        continue
 
-        elif proceed == 2:
-            is_valid_option_selected == True
-            exit()
+            elif proceed == 2:
+                is_valid_option_selected == True
+                exit()
             
-        else:
-            is_valid_option_selected == False
-            print("Invalid option selected, ensure you pick between Y/N")
+            else:
+                is_valid_option_selected == False
+                print("Invalid option selected, ensure you pick between Y/N")
+        except ValueError:
+            print("invalid value selected, try again")
+            continue
 
 
 #encryption
 def encrypt(): #pass shift count and text to encrypt as parameters...
     encryption=""
     text=input("Enter the character you want to encrypt: ")
-    key=int(input("How many times do you want to shift the characters? "))
+    try:
+        key=int(input("How many times do you want to shift the characters? "))
+    except ValueError:
+        print("invalid input try again")
+        encrypt()
     for x in text:
         if x.islower():
             index = ord(x) - ord("a")
@@ -59,9 +72,9 @@ def encrypt(): #pass shift count and text to encrypt as parameters...
 #to continue with existing operation
 def new_operation():
     option=input("Would you like to continue? Y/N: ")
-    if option == "Y":
+    if option == "Y".lower():
         init()
-    elif option == "N":
+    elif option == "N".lower():
         exit()
     else: 
         print("Invalid input, try again")
