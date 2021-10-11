@@ -15,20 +15,20 @@ def init():
             proceed=int(input("choose option 1 or option2 above: "))
             if proceed == 1:
                 is_valid_option_selected == True
-                try:
-                    cipher =int(input("Which operation would you like to perform? 1. Encryption 2. Decryption: "))
-                    if cipher == 1:
-                        encrypt()
-                        break
+                
+                cipher =int(input("Which operation would you like to perform? 1. Encryption 2. Decryption: "))
+                if cipher == 1:
+                    encrypt()
+                    break
             
-                    elif cipher == 2:
-                        decrypt()
-                        break
-                    else:
-                        print("ensure you select the right option, try again")
-                except ValueError:
-                        print("Please choose either encryption or decryption")
-                        continue
+                elif cipher == 2:
+                    decrypt()
+                    break
+                elif type(cipher)!=int:
+                    print("Please try again")
+                    init()
+                else:
+                    print("ensure you select the right option, try again")
 
             elif proceed == 2:
                 is_valid_option_selected == True
@@ -85,7 +85,11 @@ def new_operation():
 def decrypt():
     decryption=""
     text=input("Enter the encrypted character you want to decrypt: ")
-    decode_key=int(input("How many times do you want to shift the encoded characters? "))
+    try:
+        decode_key=int(input("How many times do you want to shift the encoded characters? "))
+    except ValueError:
+        print("invalid option selected, please try again")
+        decrypt()
     for x in text:
         if x.islower():
             index=ord(x)-ord("a")
