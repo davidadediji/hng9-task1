@@ -12,15 +12,13 @@ def init():
 
     while is_valid_option_selected == False:
         try:
-            proceed=int(input("choose option 1 or option2 above: "))
+            proceed=float(input("choose option 1 or option2 above: "))
             if proceed == 1:
                 is_valid_option_selected == True
-                
                 cipher =int(input("Which operation would you like to perform? 1. Encryption 2. Decryption: "))
                 if cipher == 1:
                     encrypt()
                     break
-            
                 elif cipher == 2:
                     decrypt()
                     break
@@ -33,7 +31,6 @@ def init():
             elif proceed == 2:
                 is_valid_option_selected == True
                 exit()
-            
             else:
                 is_valid_option_selected == False
                 print("Invalid option selected, ensure you pick between Y/N")
@@ -47,7 +44,7 @@ def encrypt(): #pass shift count and text to encrypt as parameters...
     encryption=""
     text=input("Enter the character you want to encrypt: ")
     try:
-        key=int(input("How many times do you want to shift the characters? "))
+        key=float(input("How many times do you want to shift the characters? "))
     except ValueError:
         print("invalid input try again")
         encrypt()
@@ -79,7 +76,6 @@ def new_operation():
     else: 
         print("Invalid input, try again")
         new_operation()
-        
 
 #decryption
 def decrypt():
@@ -96,9 +92,7 @@ def decrypt():
             new_index = (index - decode_key)%26
             new_unicode=new_index + ord("a")
             new_char=chr(new_unicode)
-
             decryption+=new_char
-
         else:
             decryption+=x
     print (decryption)
