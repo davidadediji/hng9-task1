@@ -1,6 +1,3 @@
-
-
-
 fhand = open('romeo.txt')
 
 count = 0
