@@ -2,7 +2,7 @@
 def length(name):
     return len(name)
 
-print(length("David"))
+print(length("Sam"))
 
 name = 'David'
 print(len(name))
