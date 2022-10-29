@@ -4,8 +4,6 @@ const dotenv = require('dotenv')
 dotenv.config();
 
 const port = process.env.PORT || 5000
-const age = process.env.AGE
-const bio = process.env.BIO
 
 const app = express();
 
@@ -13,10 +11,9 @@ app.get('/', (req, res)=>{
     res.json({
         "slackUsername":"davidadediji",
         "backend":true,
-        "age":age,
-        "bio":bio
+        "age":24,
+        "bio":'backend engineer'
     })
-    res.end();
 })
 
 
