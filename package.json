@@ -7,7 +7,7 @@
     "node": "18.x"
   },
   "scripts": {
-    "dev": "node *.js"
+    "start": "node index.js"
   },
   "repository": {
     "type": "git",
