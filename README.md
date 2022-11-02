@@ -1,9 +1,9 @@
 ### Task Description
 
 - Setup a server (Hosted)
-- Create an `GET` api endoint that returns the following json response:
+- Create an `GET` api endpoint that returns the following json response:
     
-```
+```json
     { 
         "slackUsername": String, 
         "backend": Boolean, 
